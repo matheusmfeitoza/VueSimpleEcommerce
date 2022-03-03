@@ -1,4 +1,4 @@
-{
+[{
   "id": "smartwatch",
   "nome": "Smartwatch",
   "preco": 1199,
@@ -18,3 +18,4 @@
     }
   ]
 }
+]

@@ -1,4 +1,4 @@
-{
+[{
   "id": "speaker",
   "nome": "Speaker",
   "preco": 599,
@@ -18,3 +18,4 @@
     }
   ]
 }
+]

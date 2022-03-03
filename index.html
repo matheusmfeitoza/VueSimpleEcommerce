@@ -36,19 +36,24 @@
           </div>
         </div>
       </section>
-      <section v-show="produto" class="modal" @click="fecharModal">
+      <section
+        v-show="produto"
+        class="modal"
+        @click="fecharModal"
+        v-for="(item,index) in produto"
+      >
         <div class="modal_container">
           <div class="modal_img">
-            <img :src="produto.img" :alt="produto.nome" />
+            <img :src="item.img" :alt="item.nome" />
           </div>
           <div class="modal_dados">
             <button @click="produto = false" class="modal_fechar">X</button>
-            <span class="modal_preco">{{produto.preco | convertToBrl}}</span>
-            <h2 class="modal_titulo">{{produto.nome}}</h2>
-            <p class="modal_descricao">{{produto.descricao}}</p>
+            <span class="modal_preco">{{item.preco | convertToBrl}}</span>
+            <h2 class="modal_titulo">{{item.nome}}</h2>
+            <p class="modal_descricao">{{item.descricao}}</p>
             <button
               class="modal_btn"
-              v-if="produto.estoque > 0"
+              v-if="item.estoque > 0"
               @click="adicionaCarrinho()"
             >
               Adicionar Item
@@ -60,7 +65,7 @@
           <div class="avaliacoes">
             <h2 class="avaliacoes_subtitulo">Avaliações</h2>
             <ul>
-              <li v-for="avaliacao in produto.avaliacao" class="avaliacao">
+              <li v-for="avaliacao in item.avaliacao" class="avaliacao">
                 <p class="avaliacao_descricao">{{avaliacao.descricao}}</p>
                 <p class="avaliacao_nome">
                   {{avaliacao.nome}} | {{avaliacao.estrelas}} estrelas

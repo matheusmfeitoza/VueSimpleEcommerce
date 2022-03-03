@@ -47,14 +47,14 @@ const vm = new Vue({
       });
     },
     fecharModal({ target, currentTarget }) {
-      if (target === currentTarget) this.produto = false;
+      if (target === currentTarget) this.produto[0] = false;
     },
     closeCarrinho({ target, currentTarget }) {
       if (target === currentTarget) this.carrinhoAtivo = false;
     },
     adicionaCarrinho() {
-      this.produto.estoque--;
-      const { id, nome, preco } = this.produto;
+      this.produto[0].estoque--;
+      const { id, nome, preco } = this.produto[0];
       this.carrinho.push({ id, nome, preco });
       this.ativaMensagem(`${nome} foi adicinado ao carrinho`);
     },
@@ -73,8 +73,8 @@ const vm = new Vue({
       }, 1500);
     },
     compararItensCarrinho() {
-      const itens = this.carrinho.filter(({ id }) => id === this.produto.id);
-      this.produto.estoque -= itens.length;
+      const itens = this.carrinho.filter(({ id }) => id === this.produto[0].id);
+      this.produto[0].estoque -= itens.length;
     },
     router() {
       const rota = document.location.hash;
@@ -85,13 +85,15 @@ const vm = new Vue({
   },
   watch: {
     produto() {
-      document.title = `Tecno - ${this.produto.id}` || "Tecno";
-      const hash = this.produto.id || "";
-      history.pushState(null, null, `#${hash}`);
-      if (document.title === "Tecno - undefined") {
-        document.title = "Tecno";
+      if (this.produto[0]) {
+        document.title = `Tecno - ${this.produto[0].id}` || "Tecno";
+        const hash = this.produto[0].id || "";
+        history.pushState(null, null, `#${hash}`);
+        if (document.title === "Tecno - undefined") {
+          document.title = "Tecno";
+        }
       }
-      if (this.produto) {
+      if (this.produto[0]) {
         this.compararItensCarrinho();
       }
     },

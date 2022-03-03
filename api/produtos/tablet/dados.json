@@ -1,4 +1,4 @@
-{
+[{
   "id": "tablet",
   "nome": "Tablet",
   "preco": 899,
@@ -17,4 +17,4 @@
       "descricao": "Gostei, mas o preço poderia ser melhor."
     }
   ]
-}
+}]
