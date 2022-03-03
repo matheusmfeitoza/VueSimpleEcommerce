@@ -1,4 +1,4 @@
-{
+[{
   "id": "notebook",
   "nome": "Notebook",
   "preco": 2999,
@@ -18,3 +18,4 @@
     }
   ]
 }
+]
